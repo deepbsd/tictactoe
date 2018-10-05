@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title>tic tac toe</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.css">
     <link rel="stylesheet" href="style.css">
     <script src="jquery-3.3.1.min.js"></script>
@@ -10,16 +10,44 @@
 <body>
    <div class="y-wrap">
    
+     <h1>Tic Tac Toe</h1>
+
      <div class="gamewrap">
      
-       <div class="row row1"></div> <div class="row row1"></div> <div class="row row1"></div><br/>
-       <div class="row row2"></div> <div class="row row2"></div> <div class="row row2"></div><br/>
-       <div class="row row3"></div> <div class="row row3"></div> <div class="row row3"></div><br/>
-     
-     </div>
+       <div class="gameinfo"></div>
+
+       <div class="cellwrap">
+
+        <table>
+          <tr>
+            <td id="1">X</td>
+            <td id="2" class="vert"></td>
+            <td id="3"></td>
+          </tr>
+          <tr>
+            <td id="4" class="horiz"></td>
+            <td id="5" class="vert horiz"></td>
+            <td id="6" class="horiz"></td>
+          </tr>
+          <tr>
+            <td id="7"></td>
+            <td id="8" class="vert"></td>
+            <td id="9"></td>
+          </tr>
+        </table>
+
+
+       </div>  <!-- cellwrap -->
+     </div>  <!-- gamewrap -->
    
-   </div>
+   </div>  <!-- y-wrap -->
 
    <script src="main.js"></script>
 </body>
 </html>
+
+
+           <!-- <div id="1"  class="cell row1 col1"></div> <div id="2" class="cell row1 col2"></div> <div id="3" class="cell row1 col3"></div><br/>
+           <div id="4" class="cell row2 col1"></div> <div id="5" class="cell row2 col2"></div> <div id="6" class="cell row2 col3"></div><br/>
+           <div id="7" class="cell row3 col1"></div> <div id="8" class="cell row3 col2"></div> <div id="9" class="cell row3 col3"></div><br/>
+           -->

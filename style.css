@@ -1,18 +1,36 @@
-.row {
-  border: 1px solid black;
-  display: inline-block;
+h1 {
+    font-family: Monaco sans-serif;
+    font-size: 46px;
+    text-align: center;
+}
+
+td {
+  font-size: 2em;
   height: 100px;
   width: 100px;
+  text-align: center
+}
+
+.vert {
+  border-left: 3px solid black;
+  border-right: 3px solid black;
+}
+
+.horiz {
+  border-top: 3px solid black;
+  border-bottom: 3px solid black;
 }
 
 .y-wrap {
+}
+
+.gamewrap {
     height: 500px;
     position: relative;
 }
 
-.gamewrap {
+.cellwrap {
     position: absolute;
     top: 30%;
-    left: 30%;
-    
+    left: 40%;
 }
