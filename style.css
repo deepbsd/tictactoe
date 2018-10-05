@@ -1,0 +1,18 @@
+.row {
+  border: 1px solid black;
+  display: inline-block;
+  height: 100px;
+  width: 100px;
+}
+
+.y-wrap {
+    height: 500px;
+    position: relative;
+}
+
+.gamewrap {
+    position: absolute;
+    top: 30%;
+    left: 30%;
+    
+}
