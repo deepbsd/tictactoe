@@ -12,11 +12,11 @@ $(document).ready(function(){
       if (checkForWinner()!=-1 && checkForWinner()!="") { 
 	    if (checkForWinner()=="X") { $("#gameinfo").append("Player 1 wins!"); }
         else { $("#gameinfo").append("Player 2 wins!"); }
-        play = false; 
+        canplay = false; 
       }
       if (checkForWinner()==-1 && turn > 9){
           $("#gameinfo").append("Cats game!");
-          play = false;
+          canplay = false;
       }
       
     }
