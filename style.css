@@ -29,6 +29,11 @@ td {
     position: relative;
 }
 
+#gameinfo {
+  font-size: 1.5em;
+  text-align: center;
+}
+
 .cellwrap {
     position: absolute;
     top: 30%;
