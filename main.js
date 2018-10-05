@@ -8,11 +8,17 @@ $(document).ready(function(){
       if ((turn%2)==1) { $(this).append("X"); } 
       else { $(this).append("O"); }
       turn++;
+      console.log("turn: ",turn);
       if (checkForWinner()!=-1 && checkForWinner()!="") { 
 	    if (checkForWinner()=="X") { $("#gameinfo").append("Player 1 wins!"); }
         else { $("#gameinfo").append("Player 2 wins!"); }
         play = false; 
       }
+      if (checkForWinner()==-1 && turn > 9){
+          $("#gameinfo").append("Cats game!");
+          play = false;
+      }
+      
     }
   });
 
