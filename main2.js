@@ -6,14 +6,16 @@ $(document).ready(function(){
 	const huPlayer = 'O';
 	const aiPlayer = 'X';
 
+    let player = huPlayer;
+
     let cells = [];
 
-    function getCells(function(){
+    function getCells(){
         $("td").each(function(){
             cells.push( $("td").text() );
         })
         return cells;
-    })
+    }
 
 
     function checkForWinner(){
@@ -46,10 +48,11 @@ $(document).ready(function(){
 
 	function startGame() {
         $("#board tr td").click(function(){
-            if ($(this.text=="" && canplay){
-                if (player === huPlayer) { $(this).append( huPlayer ); }
+            if ($(this).text()=="" && canplay){
+
+                if (checkForWinner() !== -1 && checkForWinner() === huPlayer) { $(this).append( huPlayer ); }
                 else { $(this).append( aiPlayer ); }
-            } )
+            } 
         })
 	}
 
@@ -58,8 +61,9 @@ $(document).ready(function(){
 	}
 
 	function turn(squareId, player) {
-		origBoard[squareId] = player;
-		document.getElementById(squareId).innerText = player;
+		//origBoard[squareId] = player;
+		//document.getElementById(squareId).innerText = player;
+        $
 	}
 
 
