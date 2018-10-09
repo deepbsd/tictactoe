@@ -10,12 +10,20 @@ $(document).ready(function(){
 
     let cells = [];
 
-    function getCells(){
-        $("td").each(function(){
-            cells.push( $("td").text() );
-        })
-        return cells;
-    }
+
+	function getValues(){
+        var space1 = $("#1").text();
+        var space2 = $("#2").text();
+        var space3 = $("#3").text();
+        var space4 = $("#4").text();
+        var space5 = $("#5").text();
+        var space6 = $("#6").text();
+        var space7 = $("#7").text();
+        var space8 = $("#8").text();
+        var space9 = $("#9").text();
+		return [space1,space2,space3,space4,space5,space6,space7,space8,space9]
+
+	}
 
 
     function checkForWinner(){
