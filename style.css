@@ -34,6 +34,17 @@ td {
   text-align: center;
 }
 
+#restart {
+  margin-left: 45%;
+}
+
+button {
+    height: 45px;
+    width 30px;
+    background-color: white;
+    color: crimson;
+}
+
 .cellwrap {
     position: absolute;
     top: 30%;

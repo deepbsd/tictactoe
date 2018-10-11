@@ -75,7 +75,14 @@ $(document).ready(function(){
                   else { $("#gameinfo").append("AI player wins!"); }
                   canplay = false
               }
+              if (checkForWinner()===-1 && turn > 9){
+                  $("#gameinfo").append("Cat's game!!")
+                  canplay = false;
+              }
             } 
+        })
+        $("button").click(function(){
+            location.reload();
         })
 	}
 
