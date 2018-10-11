@@ -62,12 +62,14 @@ $(document).ready(function(){
             if ($(this).text()=="" && canplay){
               if (player === huPlayer){
                 $(this).append( huPlayer ); 
-              } else {
-                aiChoice = getAIChoice();
-                $(aiChoice).append(aiPlayer);
-              }
+                turn++;
+              } 
               console.log(`turn: ${turn} player: ${player} `)
+
+              aiChoice = getAIChoice();
+              $(aiChoice).append(aiPlayer);
               turn++;
+              
               if (checkForWinner()!==-1 && checkForWinner()!==""){
                   if (checkForWinner()===huPlayer){$("#gameinfo").append("Human Player wins!");}
                   else { $("#gameinfo").append("AI player wins!"); }
@@ -77,27 +79,17 @@ $(document).ready(function(){
         })
 	}
 
+    // Chooses random empty cell for now
     function getAIChoice(){
         let available = [];
-        //var space1 = $("#1").text();
-        //var space2 = $("#2").text();
-        //var space3 = $("#3").text();
-        //var space4 = $("#4").text();
-        //var space5 = $("#5").text();
-        //var space6 = $("#6").text();
-        //var space7 = $("#7").text();
-        //var space8 = $("#8").text();
-        //var space9 = $("#9").text();
-       
-        //let cells = [space1, space2, space3, space4, space5, space6, space7, space8, space9]
         let cells = getValues();
         
-          for (let i=1; i<=9; i++){ 
-            let id = `#${i}`;
-            if ($(id).text() === "") {
-                available.push(id)
-            }
+        for (let i=1; i<=9; i++){ 
+          let id = `#${i}`;
+          if ($(id).text() === "") {
+              available.push(id)
           }
+        }
         
           let choice = available[Math.floor(Math.random()*available.length)]
           console.log("cells: ", cells, " available: ", available, " choice: ",choice)
