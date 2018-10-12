@@ -66,8 +66,9 @@ $(document).ready(function(){
               } 
               console.log(`turn: ${turn} player: ${player} `)
 
-              aiChoice = getAIChoice();
+              aiChoice = getAIChoiceSimple();
               $(aiChoice).append(aiPlayer);
+              getAIChoiceSmart();
               turn++;
               
               if (checkForWinner()!==-1 && checkForWinner()!==""){
@@ -87,7 +88,7 @@ $(document).ready(function(){
 	}
 
     // Chooses random empty cell for now
-    function getAIChoice(){
+    function getAIChoiceSimple(){
         let available = [];
         let cells = getValues();
         
@@ -101,7 +102,25 @@ $(document).ready(function(){
           let choice = available[Math.floor(Math.random()*available.length)]
           console.log("cells: ", cells, " available: ", available, " choice: ",choice)
           return choice;
+    }
+
+    // Chooses smarter empty cell
+    function getAIChoiceSmart(){
+        let available = [];
+        let cells = getValues();
+
+        let [space1, space2, space3, space4, space5, space6, space7, space8, space9] = cells;
+
+        for (let i=1; i<=9; i++){
+            let id = `#${i}`;
+            if ($(id).text() === ""){
+                available.push(id)
+            }
+        }
+
+        console.log("spaces: ", space1, space2, space3, space4, space5, space6, space7, space8, space9)
 
     }
+
 
 });
