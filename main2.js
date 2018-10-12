@@ -118,6 +118,11 @@ $(document).ready(function(){
             }
         }
 
+        // First check to see if AI can win the game...
+        //
+        // Second if AI cannot win, try to block human player and force a cats game
+        //
+
         console.log("spaces: ", space1, space2, space3, space4, space5, space6, space7, space8, space9)
 
     }
