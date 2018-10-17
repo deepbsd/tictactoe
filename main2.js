@@ -26,6 +26,7 @@ $(document).ready(function(){
 	}
 
     function checkForNearWinner(){
+        console.log("starting NearWinner()...")
         var cells = getValues();
         let [space1, space2, space3, space4, space5, space6, space7, space8, space9] = cells
         //horizontal
@@ -41,7 +42,27 @@ $(document).ready(function(){
            else if (space6===""){ return "#6" }
            else console.log("horiz two: oh crap!")
         }
+        else if ((space7===space8)||(space8===space9)||(space7===space9)){
+           if (space7===""){ return "#7" }
+           else if (space8===""){ return "#8" }
+           else if (space9===""){ return "#9" }
+           else console.log("horiz three: oh crap!")
+        }
+        else if ((space1===space5)||(space5===space9)||(space1===space9)){
+           if (space1===""){ return "#1" }
+           else if (space5===""){ return "#5" }
+           else if (space9===""){ return "#9" }
+           else console.log("diag one: oh crap!")
+        }
+        else if ((space3===space5)||(space5===space7)||(space1===space7)){
+           if (space3===""){ return "#3" }
+           else if (space5===""){ return "#5" }
+           else if (space7===""){ return "#7" }
+           else console.log("diag one: oh crap!")
+        }
+        return null;
     }
+      
 
 
     function checkForWinner(){
@@ -75,6 +96,7 @@ $(document).ready(function(){
     // Need to refactor this so we don't need a click for aiPlayer to enter choice
 	function startGame() {
         $("#board tr td").click(function(){
+            console.log(`turn: ${turn} player: ${player} `)
             if (turn%2===0){ player = aiPlayer }
             else { player = huPlayer }
             if ($(this).text()=="" && canplay){
@@ -82,11 +104,11 @@ $(document).ready(function(){
                 $(this).append( huPlayer ); 
                 turn++;
               } 
-              console.log(`turn: ${turn} player: ${player} `)
 
-              aiChoice = getAIChoiceSimple();
+              //aiChoice = getAIChoiceSimple();
+              aiChoice = getAIChoiceSmart();
               $(aiChoice).append(aiPlayer);
-              getAIChoiceSmart();
+              //getAIChoiceSmart();
               turn++;
               
               if (checkForWinner()!==-1 && checkForWinner()!==""){
@@ -126,6 +148,7 @@ $(document).ready(function(){
     function getAIChoiceSmart(){
         let available = [];
         let cells = getValues();
+        let choice = null;
 
         let [space1, space2, space3, space4, space5, space6, space7, space8, space9] = cells;
 
@@ -136,12 +159,22 @@ $(document).ready(function(){
             }
         }
 
+        if (!checkForNearWinner()){
+            console.log("NearWinnner returns: ",checkForNearWinner())
+            choice = getAIChoiceSimple();
+        } else {
+            console.log("NearWinnner returns: ",checkForNearWinner())
+            choice = checkForNearWinner();
+        }
+
         // First check to see if AI can win the game...
         //
         // Second if AI cannot win, try to block human player and force a cats game
         //
 
         console.log("spaces: ", space1, space2, space3, space4, space5, space6, space7, space8, space9)
+        console.log("choice: ", choice)
+        return choice;
 
     }
 
