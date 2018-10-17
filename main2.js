@@ -30,7 +30,16 @@ $(document).ready(function(){
         let [space1, space2, space3, space4, space5, space6, space7, space8, space9] = cells
         //horizontal
         if ((space1===space2)||(space2===space3)||(space1===space3)) {
-
+           if (space3===""){ return "#3" }
+           else if (space2===""){ return "#2" }
+           else if (space1===""){ return "#1" }
+           else console.log("horiz one: oh crap!")
+        }
+        else if ((space4===space5)||(space5===space6)||(space4===space6)){
+           if (space4===""){ return "#4" }
+           else if (space5===""){ return "#5" }
+           else if (space6===""){ return "#6" }
+           else console.log("horiz two: oh crap!")
         }
     }
 
