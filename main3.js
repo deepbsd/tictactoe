@@ -18,23 +18,38 @@ $(document).ready(function(){
 
   $("#board tr td").click(function() {
     if ($(this).text()=="" && canplay) {
-      if ((turn%2)==1) { $(this).append("X"); } 
-      else { $(this).append("O"); }
+      if ((turn%2)==1) { $(this).append(huPlayer); } 
+      else { 
+          let aiChoice = `#${minimax(getValues(),aiPlayer)}`
+          $(aiChoice).append(aiPlayer); 
+      }
       turn++;
       console.log("turn: ",turn);
-      if (checkForWinner()!=-1 && checkForWinner()!="") { 
-	    if (checkForWinner()=="X") { $("#gameinfo").append("Player 1 wins!"); }
-        else { $("#gameinfo").append("Player 2 wins!"); }
-        canplay = false; 
-      }
-      if (checkForWinner()==-1 && turn > 9){
+
+
+     if (winning(getValues(),huPlayer)) { $("#gameinfo").append("Player 1 wins!"); canplay = false;  }
+     if (winning(getValues(),aiPlayer)) { $("#gameinfo").append("Player 2 wins!"); canplay = false;  }
+     }
+     if (!winning(getValues(),aiPlayer) && !winning(getValues(),huPlayer) && turn > 9){
           $("#gameinfo").append("Cats game!");
           canplay = false;
-      }
+     }
       
-    }
   });
 
+	function getValues(){
+        var space1 = $("#1").text();
+        var space2 = $("#2").text();
+        var space3 = $("#3").text();
+        var space4 = $("#4").text();
+        var space5 = $("#5").text();
+        var space6 = $("#6").text();
+        var space7 = $("#7").text();
+        var space8 = $("#8").text();
+        var space9 = $("#9").text();
+		return [space1,space2,space3,space4,space5,space6,space7,space8,space9]
+
+	}
 
 
 	// winning combinations using the board indexies
@@ -128,6 +143,9 @@ $(document).ready(function(){
 	  return moves[bestMove];
 	}
 
+    $("button").click(function(){
+        location.reload();
+    })
 
 
 })
