@@ -3,7 +3,8 @@ $(document).ready(function(){
 
   var turn = 1;
   var canplay = true;
-  var origBoard = ["","","","","","","","",""];
+  //var origBoard = ["","","","","","","","",""];
+  var origBoard = [0,1,2,3,4,5,6,7,8];
 
   // human
   var huPlayer = "X";
@@ -12,14 +13,16 @@ $(document).ready(function(){
   var aiPlayer = "O";
   
   // returns list of the indexes of empty spots on the board
-  function emptyIndexies(board){
+  function emptyIndexes(board){
     return  board.filter(s => s != "O" && s != "X");
   }
 
   $("#board tr td").click(function() {
     if ($(this).text()=="" && canplay) {
-      if ((turn%2)==1) { $(this).append(huPlayer); } 
-      else { 
+      if ((turn%2)==1) { 
+          $(this).append(huPlayer); 
+      } else { 
+          console.log("getValues: ", getValues())
           let aiChoice = `#${minimax(getValues(),aiPlayer)}`
           $(aiChoice).append(aiPlayer); 
       }
@@ -35,7 +38,6 @@ $(document).ready(function(){
           canplay = false;
      }
       
-    }
   });
 
 	function getValues(){
@@ -55,27 +57,26 @@ $(document).ready(function(){
 
 	// winning combinations using the board indexies
 	function winning(board, player){
-	 if (
-	 (board[0] == player && board[1] == player && board[2] == player) ||
-	 (board[3] == player && board[4] == player && board[5] == player) ||
-	 (board[6] == player && board[7] == player && board[8] == player) ||
-	 (board[0] == player && board[3] == player && board[6] == player) ||
-	 (board[1] == player && board[4] == player && board[7] == player) ||
-	 (board[2] == player && board[5] == player && board[8] == player) ||
-	 (board[0] == player && board[4] == player && board[8] == player) ||
-	 (board[2] == player && board[4] == player && board[6] == player)
-	 ) {
-	 return true;
-	 } else {
-	 return false;
-	 }
+         if ( (board[0] == player && board[1] == player && board[2] == player) ||
+             (board[3] == player && board[4] == player && board[5] == player) ||
+             (board[6] == player && board[7] == player && board[8] == player) ||
+             (board[0] == player && board[3] == player && board[6] == player) ||
+             (board[1] == player && board[4] == player && board[7] == player) ||
+             (board[2] == player && board[5] == player && board[8] == player) ||
+             (board[0] == player && board[4] == player && board[8] == player) ||
+             (board[2] == player && board[4] == player && board[6] == player)) {
+             return true;
+         } else {
+             return false;
+         }
 	}
 
 	// the main minimax function
 	function minimax(newBoard, player){
+      console.log("newBoard: ",newBoard)
 	  
 	  //available spots
-	  var availSpots = emptyIndexies(newBoard);
+	  var availSpots = emptyIndexes(newBoard);
 
 	  // checks for the terminal states such as win, lose, and tie 
 	  //and returning a value accordingly
