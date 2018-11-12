@@ -12,13 +12,13 @@ td {
 }
 
 .vert {
-  border-left: 3px solid black;
-  border-right: 3px solid black;
+  border-left: 5px solid midnightblue;
+  border-right: 5px solid midnightblue;
 }
 
 .horiz {
-  border-top: 3px solid black;
-  border-bottom: 3px solid black;
+  border-top: 5px solid midnightblue;
+  border-bottom: 5px solid midnightblue;
 }
 
 .y-wrap {
@@ -42,7 +42,7 @@ button {
     height: 45px;
     width 30px;
     background-color: white;
-    color: crimson;
+    color: midnightblue;
 }
 
 .cellwrap {
