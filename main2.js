@@ -25,41 +25,44 @@ $(document).ready(function(){
 
 	}
 
-    function checkForNearWinner(){
+    function checkForNearWinner(player){
         console.log("starting NearWinner()...")
         var cells = getValues();
         let [space1, space2, space3, space4, space5, space6, space7, space8, space9] = cells
+        console.log(`spaces: ${space1} ${space2} ${space3}`)
         if (space5===""){ return "#5" }
         //horizontal top
-        if ((space1===space2)||(space2===space3)||(space1===space3)) {
+        if ((space1===space2===player)||(space2===space3===player)||(space1===space3===player)) {
+           // We're looking for the cell to complete the win
+           console.log(`horizontal top ${space1} ${space2} ${space3}`)
            if (space3===""){ return "#3" }
            else if (space2===""){ return "#2" }
            else if (space1===""){ return "#1" }
            else console.log("horiz one: oh crap!")
         }
         //horizontal middle
-        if ((space4===space5)||(space5===space6)||(space4===space6)){
+        if ((space4===space5===player)||(space5===space6===player)||(space4===space6===player)){
            if (space4===""){ return "#4" }
            else if (space5===""){ return "#5" }
            else if (space6===""){ return "#6" }
            else console.log("horiz two: oh crap!")
         }
         //horizontal bottom
-        if ((space7===space8)||(space8===space9)||(space7===space9)){
+        if ((space7===space8===player)||(space8===space9===player)||(space7===space9===player)){
            if (space7===""){ return "#7" }
            else if (space8===""){ return "#8" }
            else if (space9===""){ return "#9" }
            else console.log("horiz three: oh crap!")
         }
         //diagonal top left
-        if ((space1===space5)||(space5===space9)||(space1===space9)){
+        if ((space1===space5===player)||(space5===space9===player)||(space1===space9===player)){
            if (space1===""){ return "#1" }
            else if (space5===""){ return "#5" }
            else if (space9===""){ return "#9" }
            else console.log("diag one: oh crap!")
         }
         //diagonal top right
-        if ((space3===space5)||(space5===space7)||(space1===space7)){
+        if ((space3===space5===player)||(space5===space7===player)||(space1===space7===player)){
            if (space3===""){ return "#3" }
            else if (space5===""){ return "#5" }
            else if (space7===""){ return "#7" }
@@ -185,12 +188,14 @@ $(document).ready(function(){
             }
         }
 
-        if (!checkForNearWinner()){
-            console.log("NearWinnner returns: ",checkForNearWinner())
-            choice = getAIChoiceSimple();
+        if (!checkForNearWinner(player)){
+            console.log("NearWinnner-1 returns: ",checkForNearWinner(player))
+            // for now return Simple Choice
+            //choice = getAIChoiceSimple();
+            choice = checkForNearWinner(player);
         } else {
-            console.log("NearWinnner returns: ",checkForNearWinner())
-            choice = checkForNearWinner();
+            console.log("NearWinnner-2 returns: ",checkForNearWinner(player))
+            choice = checkForNearWinner(player);
         }
 
         // First check to see if AI can win the game...
