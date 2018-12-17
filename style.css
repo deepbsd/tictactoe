@@ -52,7 +52,8 @@ table tr td:last-child {
   display: none;
   width: 220px;
   top: 400px;
-  background-color: rgba(205, 133, 63, 0.8);
+  background-color: #ff4d4d;
+  opacity: 0.9;
   position: absolute;
   left: 50%;
   margin-left: -110px;

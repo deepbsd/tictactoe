@@ -22,6 +22,7 @@ function selectSym(sym){
   for (let i = 0; i < cells.length; i++) {
     cells[i].addEventListener('click', turnClick, false);
   }
+  // if huPlayer chooses 'O' she goes 2nd
   if (aiPlayer === 'X') {
     turn(bestSpot(),aiPlayer);
   }
@@ -85,8 +86,9 @@ function declareWinner(who) {
   document.querySelector(".endgame").style.display = "block";
   document.querySelector(".endgame .text").innerText = who;
 }
+
 function emptySquares() {
-  return origBoard.filter((elm, i) => i===elm);
+  return origBoard.filter((element, i) => i===element);
 }
   
 function bestSpot(){
@@ -94,10 +96,10 @@ function bestSpot(){
 }
   
 function checkTie() {
+  let green = "#00ff40";
   if (emptySquares().length === 0){
     for (cell of cells) {
-      //cell.style.backgroundColor = "green";
-      cell.style.backgroundColor = "#00ff40";
+      cell.style.backgroundColor = green;
       cell.removeEventListener('click',turnClick, false);
     }
     declareWinner("Tie Game!  That's the best possible against an AI!");
@@ -117,6 +119,7 @@ function minimax(newBoard, player) {
     return {score: 0};
   }
   
+
   var moves = [];
   for (let i = 0; i < availSpots.length; i ++) {
     var move = {};
@@ -152,6 +155,8 @@ function minimax(newBoard, player) {
       }
     }
   }
+  
+  console.log("Player: ",player,"  Her Move: ",moves[bestMove]);
   
   return moves[bestMove];
 }
