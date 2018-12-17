@@ -1,0 +1,56 @@
+h1 {
+    font-family: Monaco sans-serif;
+    font-size: 46px;
+    text-align: center;
+}
+
+td {
+  font-size: 2em;
+  height: 100px;
+  width: 100px;
+  text-align: center
+}
+
+.vert {
+  border-left: 5px solid midnightblue;
+  border-right: 5px solid midnightblue;
+}
+
+.horiz {
+  border-top: 5px solid midnightblue;
+  border-bottom: 5px solid midnightblue;
+}
+
+.y-wrap {
+}
+
+.gamewrap {
+    height: 500px;
+    position: relative;
+}
+
+#gameinfo, .endgame, .selectSym, .gameinfo {
+  font-size: 1.5em;
+  text-align: center;
+}
+
+.selectSym {
+    margin-bottom: 40px;
+}
+
+#restart {
+  margin-left: 43%;
+}
+
+button {
+    height: 45px;
+    width 30px;
+    background-color: white;
+    color: midnightblue;
+}
+
+.cellwrap {
+    position: absolute;
+    top: 30%;
+    left: 33%;
+}
