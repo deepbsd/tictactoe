@@ -87,9 +87,11 @@ function declareWinner(who) {
   document.querySelector(".endgame .text").innerText = who;
 }
 
-function emptySquares() {
-  return origBoard.filter((element, i) => i===element);
+function emptySquares(board=origBoard) {
+  //return origBoard.filter((element, i) => i===element);
+  return board.filter((element, i) => i===element);
 }
+
   
 function bestSpot(){
   return minimax(origBoard, aiPlayer).index;
@@ -110,6 +112,7 @@ function checkTie() {
 
 function minimax(newBoard, player) {
   var availSpots = emptySquares(newBoard);
+  console.log("AVAIL: ",availSpots)
   
   if (checkWin(newBoard, huPlayer)) {
     return {score: -10};
@@ -120,16 +123,18 @@ function minimax(newBoard, player) {
   }
   
 
-  var moves = [];
+  let moves = [];
   for (let i = 0; i < availSpots.length; i ++) {
-    var move = {};
+
+    let move = {};
     move.index = newBoard[availSpots[i]];
     newBoard[availSpots[i]] = player;
-    
+
     if (player === aiPlayer)
       move.score = minimax(newBoard, huPlayer).score;
     else
        move.score =  minimax(newBoard, aiPlayer).score;
+
     newBoard[availSpots[i]] = move.index;
     if ((player === aiPlayer && move.score === 10) || (player === huPlayer && move.score === -10))
       return move;
@@ -137,6 +142,7 @@ function minimax(newBoard, player) {
       moves.push(move);
   }
   
+
   let bestMove, bestScore;
   if (player === aiPlayer) {
     bestScore = -1000;
@@ -149,14 +155,20 @@ function minimax(newBoard, player) {
   } else {
       bestScore = 1000;
       for(let i = 0; i < moves.length; i++) {
-      if (moves[i].score < bestScore) {
-        bestScore = moves[i].score;
-        bestMove = i;
+        if (moves[i].score < bestScore) {
+          bestScore = moves[i].score;
+          bestMove = i;
+        }
       }
-    }
   }
   
-  console.log("Player: ",player,"  Her Move: ",moves[bestMove]);
+  //console.log("***Her Move: ",moves[bestMove]);
+        // DEBUGGING
+   console.log("__MINIMAX:___")
+   console.log("Player: ",player)
+   console.log("bestScore: ",bestScore)
+   console.log("bestMove: ",bestMove)
+   console.log("minimax MovesObj: ",moves[bestMove])
   
   return moves[bestMove];
 }
