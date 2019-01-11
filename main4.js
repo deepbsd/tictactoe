@@ -112,7 +112,7 @@ function checkTie() {
 
 function minimax(newBoard, player) {
   var availSpots = emptySquares(newBoard);
-  console.log("AVAIL: ",availSpots)
+  //console.log("AVAIL: ",availSpots)
   
   if (checkWin(newBoard, huPlayer)) {
     return {score: -10};
@@ -162,13 +162,6 @@ function minimax(newBoard, player) {
       }
   }
   
-  //console.log("***Her Move: ",moves[bestMove]);
-        // DEBUGGING
-   console.log("__MINIMAX:___")
-   console.log("Player: ",player)
-   console.log("bestScore: ",bestScore)
-   console.log("bestMove: ",bestMove)
-   console.log("minimax MovesObj: ",moves[bestMove])
   
   return moves[bestMove];
 }
